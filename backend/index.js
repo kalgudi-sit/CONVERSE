@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const { chats } = require("./data/data");
+const connectDB = require("./config/db");
 
 const app = express();
 
@@ -19,5 +20,7 @@ app.get("/api/chats", (req, res) => {
 });
 
 app.listen(process.env.PORT, () => {
+    connectDB();
     console.log(`Server listening on port ${process.env.PORT}`);
 })
+
